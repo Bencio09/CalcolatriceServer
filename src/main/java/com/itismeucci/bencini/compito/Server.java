@@ -49,7 +49,7 @@ public class Server {
                 outVersoClient.writeBytes("S -> Ti servo ancora? Y/N\n");
                 cheFai = inDalClient.readLine();
             }while(cheFai.equalsIgnoreCase("Y"));
-
+            close();
 
         } catch (IOException e) {
             System.err.println(e.getMessage());
