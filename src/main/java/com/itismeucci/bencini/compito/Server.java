@@ -6,15 +6,18 @@ import java.net.*;
 public class Server {
     ServerSocket server = null;
     Socket client = null;
-    String stringaRicevuta = null;
-    String stringaModificata = null;
+    String val1 = null;
+    String val2 = null;
+    String segno = null;
+
+    String Risultato = null;
     BufferedReader inDalClient;
     DataOutputStream outVersoClient;
     Calcolatrice calcolatrice = null;
 
     public Socket attendi(){
         try{
-            System.out.println("1 Server partito in esecuzione");
+            System.out.println("S -> Server partito in esecuzione");
 
             server = new ServerSocket(4335);
 
@@ -30,5 +33,21 @@ public class Server {
             System.exit(1);
         }
         return client;
+    }
+
+    public void comunica(){
+        try {
+            System.out.println("Benvenuto");
+            outVersoClient.writeBytes("S -> Inserisci il primo valore\n");
+            val1 = inDalClient.readLine();
+            outVersoClient.writeBytes("S -> Inserisci il secondo valore\n");
+            val2 = inDalClient.readLine();
+            outVersoClient.writeBytes("S -> Inserisci il segno (+,-,*,/)\n");
+            segno = inDalClient.readLine();
+            calcolatrice = new Calcolatrice(val1, val2, segno);
+            outVersoClient.writeBytes("S -> Ti servo ancora?\n");
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
