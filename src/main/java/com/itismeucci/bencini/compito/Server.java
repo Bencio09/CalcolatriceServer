@@ -39,14 +39,14 @@ public class Server {
         try {
             System.out.println("Benvenuto io sono un server calcolatrice!\n");
             do{
-                outVersoClient.writeBytes("S -> Inserisci il primo valore\n");
+                System.out.println("S -> Inserisci il primo valore\n");
                 val1 = inDalClient.readLine();
-                outVersoClient.writeBytes("S -> Inserisci il secondo valore\n");
+                System.out.println("S -> Inserisci il secondo valore\n");
                 val2 = inDalClient.readLine();
-                outVersoClient.writeBytes("S -> Inserisci il segno (+,-,*,/)\n");
+                System.out.println("S -> Inserisci il segno (+,-,*,/)\n");
                 segno = inDalClient.readLine();
                 calcolatrice = new Calcolatrice(val1, val2, segno);
-                outVersoClient.writeBytes("S -> Ti servo ancora? Y/N\n");
+                System.out.println("S -> Ti servo ancora? Y/N\n");
                 cheFai = inDalClient.readLine();
             }while(cheFai.equalsIgnoreCase("Y"));
             close();
