@@ -60,6 +60,7 @@ public class Calcolatrice {
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
+                break;
         }
         try {
             server.outVersoClient.writeBytes("S -> Il risultato dell'operazione richiesta è " + ris +"\n");
